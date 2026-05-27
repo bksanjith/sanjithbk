@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parametric Lattice Study — Sanjith B. Kumaraswamy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SANJITH.B.K</a>
+    <ul class="nav-links">
+      <li><a href="index.html#projects">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<section class="project-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">Back to Projects</a>
+    <div class="hero-meta">PROJECT_03 / COURSEWORK / SUTD</div>
+    <h1>Parametric Lattice Design Study</h1>
+    <p class="project-tagline">
+      A coursework exploration in Rhino + Grasshopper investigating how
+      computational design rules translate into physical geometry and material
+      distribution.
+    </p>
+
+    <div class="img-placeholder wide" style="margin-top: 2rem;">
+      <span>HERO RENDER — 1600 × 900</span>
+      <span style="font-size: 0.7rem;">Best clean render of the final parametric model</span>
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <div class="meta-label">Course</div>
+        <div class="meta-value">Design Computing</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Year</div>
+        <div class="meta-value">2025</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Software</div>
+        <div class="meta-value">Rhino + Grasshopper</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Output</div>
+        <div class="meta-value">3D Parametric Model</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BRIEF -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ The Brief</div>
+    <div class="project-section-body">
+      <p>
+        For the Design Computing module at SUTD, I designed a <strong>parametric 3D
+        model</strong> with adjustable density and form parameters. The goal was to
+        understand how computational rules — not direct modelling — shape physical
+        geometry.
+      </p>
+      <p>
+        Rather than designing one fixed object, the brief was to design a
+        <strong>family of objects</strong> generated from a single set of rules. Move
+        a slider, get a new variant.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THE APPROACH -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ The Approach</div>
+    <div class="project-section-body">
+      <p>
+        I built the system in Grasshopper as a visual node graph that takes a small
+        set of input parameters and generates the full 3D form.
+      </p>
+
+      <div class="img-placeholder wide">
+        <span>GRASSHOPPER SCRIPT SCREENSHOT</span>
+        <span style="font-size: 0.7rem;">The node graph driving the model</span>
+      </div>
+
+      <h3>Parameter set</h3>
+      <ul>
+        <li><strong>Lattice density:</strong> Controls how tightly packed the cells are</li>
+        <li><strong>Form curvature:</strong> Shapes the overall envelope of the object</li>
+        <li><strong>Cell scale variation:</strong> Adds organic non-uniformity to the lattice</li>
+      </ul>
+
+      <div class="img-row">
+        <div class="img-placeholder square">
+          <span>VARIANT A</span>
+          <span style="font-size: 0.7rem;">Low density / smooth form</span>
+        </div>
+        <div class="img-placeholder square">
+          <span>VARIANT B</span>
+          <span style="font-size: 0.7rem;">High density / variable form</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNINGS -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ What I Took Away</div>
+    <div class="project-section-body">
+      <p>
+        The biggest shift was learning to think in <strong>rules instead of
+        geometry</strong>. Traditional CAD asks you to model what you want. Parametric
+        design asks you to describe how it should be generated — and then explore
+        the space of possible outputs.
+      </p>
+      <p>
+        This matters for product development because it lets you:
+      </p>
+      <ul>
+        <li>Test design variants quickly without rebuilding from scratch</li>
+        <li>Adapt designs to constraints (cost, weight, manufacturing tolerance) by changing inputs</li>
+        <li>Couple structural performance to form — useful for lightweighting, lattice infills, or generative design</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>© 2026 SANJITH B. KUMARASWAMY</div>
+  <div><a href="index.html" style="color: var(--text-dim); text-decoration: none;">← BACK TO WORK</a></div>
+</footer>
+
+</body>
+</html>

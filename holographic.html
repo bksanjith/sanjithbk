@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holographic Email Notifier — Sanjith B. Kumaraswamy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SANJITH.B.K</a>
+    <ul class="nav-links">
+      <li><a href="index.html#projects">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<section class="project-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">Back to Projects</a>
+    <div class="hero-meta">PROJECT_01 / TEAM PROJECT / SUTD</div>
+    <h1>Holographic Email Notifier</h1>
+    <p class="project-tagline">
+      An ambient home device that surfaces priority email alerts through a holographic
+      display — keeping you aware without forcing you onto a screen.
+    </p>
+
+    <div class="img-placeholder wide" style="margin-top: 2rem;">
+      <span>HERO IMAGE — 1600 × 900</span>
+      <span style="font-size: 0.7rem;">Best clean shot of the device with holographic clock visible</span>
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">Team Member</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Year</div>
+        <div class="meta-value">2025</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Hardware</div>
+        <div class="meta-value">Raspberry Pi 4 (4GB)</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Optics</div>
+        <div class="meta-value">35° Prism / Pepper's Ghost</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ The Problem</div>
+    <div class="project-section-body">
+      <p>
+        Email overload at home is a quiet but persistent friction. You either keep your
+        phone or laptop nearby — and get pulled into a notification spiral — or you put
+        them away and miss something urgent.
+      </p>
+      <p>
+        We wanted to design <strong>a non-intrusive way to surface priority email
+        alerts</strong> while still letting the home stay a home. The device needed to:
+      </p>
+      <ul>
+        <li>Be ambient enough to disappear when nothing is happening</li>
+        <li>Surface only high-priority emails, not every notification</li>
+        <li>Not require glancing at a phone or screen</li>
+        <li>Feel like a piece of furniture, not a gadget</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- THE APPROACH -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ The Approach</div>
+    <div class="project-section-body">
+      <p>
+        We chose to display information using the <strong>Pepper's Ghost effect</strong> —
+        a 19th-century optical illusion that uses an angled transparent surface to
+        reflect an image from below, creating the appearance of a floating hologram.
+      </p>
+
+      <div class="img-row">
+        <div class="img-placeholder square">
+          <span>SKETCH / DIAGRAM</span>
+          <span style="font-size: 0.7rem;">How Pepper's Ghost works in our setup</span>
+        </div>
+        <div class="img-placeholder square">
+          <span>BUILD PHOTO</span>
+          <span style="font-size: 0.7rem;">Internals — Raspberry Pi + screen + prism</span>
+        </div>
+      </div>
+
+      <p>
+        In its default state, the device displays a <strong>holographic clock</strong> —
+        ambient, glanceable, decorative. When a priority email arrives, the display
+        switches to a brief notification overlay that the user can dismiss or attend to.
+      </p>
+
+      <h3>System architecture</h3>
+      <ul>
+        <li><strong>Display layer:</strong> Small screen pointing upward at a 35° transparent prism</li>
+        <li><strong>Compute:</strong> Raspberry Pi 4 (4GB) running Python notification logic</li>
+        <li><strong>Email integration:</strong> APIs to fetch and filter incoming messages</li>
+        <li><strong>Priority logic:</strong> Sender-based and keyword-based filtering</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KEY DECISIONS -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ Key Decisions</div>
+    <div class="project-section-body">
+      <h3>The 35° prism angle</h3>
+      <p>
+        We tested multiple prism angles to find the right balance between
+        viewing comfort, image brightness, and physical footprint. 35° proved to
+        be the sweet spot — steep enough for a clear floating image, shallow
+        enough to keep the device compact and stable on a shelf.
+      </p>
+
+      <div class="img-placeholder wide">
+        <span>ANGLE TEST PHOTOS</span>
+        <span style="font-size: 0.7rem;">Side-by-side of different prism angles</span>
+      </div>
+
+      <h3>Filter aggressively, not gently</h3>
+      <p>
+        Early prototypes surfaced too many emails — defeating the purpose. We
+        moved to an aggressive filtering model: by default, nothing is shown.
+        Only emails matching specific high-priority criteria break through. The
+        ambient clock stays ambient.
+      </p>
+
+      <h3>Build the optics before the software</h3>
+      <p>
+        We deliberately got the physical optics working before writing any
+        backend logic. If the Pepper's Ghost effect didn't look good, no amount
+        of clever code would save the product. This kept us honest about
+        whether the core concept was viable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ Results & Testing</div>
+    <div class="project-section-body">
+      <p>
+        We validated the design through iterative testing on:
+      </p>
+      <ul>
+        <li><strong>Viewing angle:</strong> Image legibility across a 0–60° viewing cone</li>
+        <li><strong>Brightness:</strong> Performance under various ambient room lighting</li>
+        <li><strong>Notification clarity:</strong> Whether the alert was readable at a glance from across the room</li>
+        <li><strong>Ambient unobtrusiveness:</strong> Whether the idle state genuinely receded into the background</li>
+      </ul>
+
+      <div class="img-placeholder wide">
+        <span>DEMO VIDEO / GIF</span>
+        <span style="font-size: 0.7rem;">15–30 sec clip of the holographic effect in action</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNINGS -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ What I'd Do Differently</div>
+    <div class="project-section-body">
+      <p>
+        Three things I'd change on a v2:
+      </p>
+      <ul>
+        <li><strong>On-device ML for priority detection.</strong> Right now filtering is rule-based — a lightweight ML model could learn what counts as "urgent" for each user without manual setup.</li>
+        <li><strong>Custom prism mount.</strong> The current setup uses a generic prism in a 3D-printed cradle. A custom-machined mount would tighten tolerances and improve image clarity.</li>
+        <li><strong>Reduce idle power draw.</strong> The Pi 4 is overkill for a device that mostly displays a clock. A Pi Zero or microcontroller with a separate display driver would cut power consumption substantially.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ Specifications</div>
+    <div class="project-section-body">
+      <table class="spec-table">
+        <tr><td>Compute</td><td>Raspberry Pi 4 — 4GB RAM</td></tr>
+        <tr><td>Optical system</td><td>Pepper's Ghost effect, 35° prism</td></tr>
+        <tr><td>Software</td><td>Python, email API integration</td></tr>
+        <tr><td>Display state</td><td>Idle: holographic clock / Active: priority notification</td></tr>
+        <tr><td>Filtering</td><td>Sender + keyword-based priority detection</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>© 2026 SANJITH B. KUMARASWAMY</div>
+  <div><a href="index.html" style="color: var(--text-dim); text-decoration: none;">← BACK TO WORK</a></div>
+</footer>
+
+</body>
+</html>

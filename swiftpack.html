@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwiftPack — Sanjith B. Kumaraswamy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SANJITH.B.K</a>
+    <ul class="nav-links">
+      <li><a href="index.html#projects">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<section class="project-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">Back to Projects</a>
+    <div class="hero-meta">PROJECT_02 / PERSONAL / IN PROGRESS</div>
+    <h1>SwiftPack — E-commerce Order Packing Terminal</h1>
+    <p class="project-tagline">
+      A Raspberry Pi-based packing station that aggregates orders from Shopee, Lazada,
+      and Shopify into a single workflow — targeting a 70% reduction in per-parcel
+      packing time.
+    </p>
+
+    <div class="img-placeholder wide" style="margin-top: 2rem;">
+      <span>HERO IMAGE — 1600 × 900</span>
+      <span style="font-size: 0.7rem;">Current prototype: Pi + touchscreen + thermal printer setup</span>
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">Solo / Lead</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Status</div>
+        <div class="meta-value">In Progress</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Target</div>
+        <div class="meta-value">5 min → 1.5 min/parcel</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Platforms</div>
+        <div class="meta-value">Shopee, Lazada, Shopify</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ The Problem</div>
+    <div class="project-section-body">
+      <p>
+        Running a multi-platform e-commerce business means context-switching between
+        Shopee Seller Centre, Lazada Seller Centre, and Shopify constantly. Every
+        order has its own login, its own label format, its own quirks.
+      </p>
+      <p>
+        At Fragrance Castle, I watched this process eat into the day. The pain
+        wasn't packing — it was everything <em>around</em> packing:
+      </p>
+      <ul>
+        <li>Logging into separate seller portals for every batch</li>
+        <li>Navigating to the right order, generating the label, downloading the PDF</li>
+        <li>Switching to the printer queue, printing, then back to the portal</li>
+        <li>A single label took roughly <strong>2 minutes</strong> end-to-end</li>
+        <li>Total per-parcel packing time landed around <strong>5 minutes</strong></li>
+      </ul>
+      <p>
+        Scale that up across 50 orders a day and you've lost half a working day to
+        platform context-switching alone.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THE APPROACH -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ The Approach</div>
+    <div class="project-section-body">
+      <p>
+        SwiftPack is a <strong>purpose-built packing terminal</strong> that
+        consolidates all three platforms into one interface. One screen, one
+        login, one button to print.
+      </p>
+
+      <div class="img-placeholder wide">
+        <span>SYSTEM DIAGRAM</span>
+        <span style="font-size: 0.7rem;">Shopee + Lazada + Shopify APIs → Raspberry Pi → Touchscreen + Thermal Printer</span>
+      </div>
+
+      <h3>The interface model</h3>
+      <p>
+        I'm modelling the UI after the <strong>Bambu Lab X1 Carbon 3D printer
+        interface</strong>. It's a great reference for purpose-built embedded
+        touchscreens: large tap targets, minimal text, status-first design,
+        zero clutter. Built for use with gloves on, in a hurry, with one hand.
+      </p>
+
+      <div class="img-row">
+        <div class="img-placeholder square">
+          <span>UI MOCKUP</span>
+          <span style="font-size: 0.7rem;">Order list view</span>
+        </div>
+        <div class="img-placeholder square">
+          <span>UI MOCKUP</span>
+          <span style="font-size: 0.7rem;">Single order / print view</span>
+        </div>
+      </div>
+
+      <h3>System architecture</h3>
+      <ul>
+        <li><strong>Hardware:</strong> Raspberry Pi + 7" touchscreen + thermal label printer</li>
+        <li><strong>Connectivity:</strong> Shopee, Lazada, Shopify seller APIs (REST)</li>
+        <li><strong>State management:</strong> Local queue of pending orders, synced across platforms</li>
+        <li><strong>Output:</strong> Direct-to-printer label generation, no PDF intermediary</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KEY DECISIONS -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ Key Decisions</div>
+    <div class="project-section-body">
+      <h3>Print directly, skip the PDF</h3>
+      <p>
+        Most seller portals make you download a PDF, then print it. That round
+        trip costs 30+ seconds per label. SwiftPack sends label data directly
+        to the thermal printer — no PDF, no download, no preview screen. It
+        prints the moment you tap "Print."
+      </p>
+
+      <h3>One login, persistent sessions</h3>
+      <p>
+        The biggest time-sink isn't packing — it's signing in. SwiftPack stores
+        OAuth tokens for all three platforms and refreshes them automatically.
+        You sign in once, weeks ago, and the system just works.
+      </p>
+
+      <h3>Built for a specific user (me)</h3>
+      <p>
+        I'm building this for the way I actually pack at Fragrance Castle.
+        That means optimising for the real workflow — gloves on, hands sometimes
+        busy, multiple parcels at once — instead of designing for an imagined
+        average user.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ Target Outcomes</div>
+    <div class="project-section-body">
+      <table class="spec-table">
+        <tr><td>Label printing time</td><td>2 min → <strong style="color: var(--accent);">30 sec</strong> (–75%)</td></tr>
+        <tr><td>Total packing time</td><td>5 min → <strong style="color: var(--accent);">1.5 min</strong> (–70%)</td></tr>
+        <tr><td>Platforms unified</td><td>Shopee + Lazada + Shopify in one view</td></tr>
+        <tr><td>Sign-ins per session</td><td>Multiple → 0 (persistent OAuth)</td></tr>
+      </table>
+
+      <p style="margin-top: 1.5rem;">
+        At 50 orders/day, this is a recovery of roughly <strong>3 hours of
+        operational time per day</strong> — time that can go into customer service,
+        new product launches, or simply ending the workday earlier.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT PHASE -->
+<section class="project-section">
+  <div class="project-section-inner">
+    <div class="project-section-label">/ Next Phase</div>
+    <div class="project-section-body">
+      <p>
+        Once the Raspberry Pi prototype is stable, I plan to:
+      </p>
+      <ul>
+        <li><strong>Port to a cheaper microcontroller.</strong> The Pi is overkill — a Pi Zero or ESP32-based platform could halve the BOM</li>
+        <li><strong>Productise for other SEA sellers.</strong> The problem isn't unique to Fragrance Castle. Most small SEA e-commerce sellers run on the same three platforms with the same bottleneck</li>
+        <li><strong>Add a barcode scanner module</strong> for inventory cross-check at the moment of packing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>© 2026 SANJITH B. KUMARASWAMY</div>
+  <div><a href="index.html" style="color: var(--text-dim); text-decoration: none;">← BACK TO WORK</a></div>
+</footer>
+
+</body>
+</html>
